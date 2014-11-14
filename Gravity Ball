@@ -1,0 +1,44 @@
+//declare variables
+float locx, locy, velx, vely, acclx, accly, blu;
+int sz=40;
+
+void setup() {
+  size(900, 750);
+  
+  //initialize vairables
+  locx=width/2;
+  locy=50;
+  //velx=0;
+  vely=0;
+  //acclx=0;
+  accly=.25;
+  blu=0;
+}
+
+void draw() {
+  
+  //background fill
+  background(0);
+  
+  //ball
+  fill(85, 120, blu);
+  ellipse(locx, locy, sz, sz);
+
+  //change velocity
+  //velx+=acclx;
+  vely+=accly;
+  
+  //change location
+  //locx+=velx;
+  locy+=vely;
+  
+  //change color of ball
+  blu=locy;
+
+  //make ball bounce off bottom
+  if (locy+sz/2>height) {
+    locy = height - sz/2;
+    vely=-abs(vely);
+    blu=-abs(blu);
+  }
+}
